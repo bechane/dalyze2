@@ -1,7 +1,7 @@
-@include('layout.layout')
+@extends('layout.Template')
 @section('title')
-    home
+    {{$title}}
 @endsection
 @section('content')
-    content
+    <h1>This is home page</h1>
 @endsection

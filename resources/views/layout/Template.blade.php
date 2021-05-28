@@ -10,14 +10,11 @@
 
 </head>
 <body>
-    @include('inc.nav')
+    
     <div class="container">
         @yield('content')
     </div>
-    <script src="/vendor/unisharp/laravel-ckeditor/ckeditor.js"></script>
-    <script>
-        CKEDITOR.replace( 'article-ckeditor' );
-    </script>
+    
     <script src="{{asset('js/jquery-1.12.4.min.js')}}"></script>
     <script src="{{asset('js/bootstrap.min.js')}}"></script>
 </body>
