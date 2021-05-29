@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use SebastianBergmann\CodeCoverage\InvalidArgumentException;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,11 +19,14 @@ Route::get('/login', function () {
     $title = "Login Or register";
     return view('pages.login', compact('title')); //this how to set a title
 });
-Route::get('/accueil', function () {
-    $title = "Home";
-    return view('pages.Home', compact('title'));
-});
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::post('/manual-logout', function () {
+    Auth::logout();
+    request()->session()->invalidate();
+    request()->session()->regenerateToken();
+    return redirect('/login');
+});
