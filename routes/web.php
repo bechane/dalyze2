@@ -15,18 +15,18 @@ use SebastianBergmann\CodeCoverage\InvalidArgumentException;
 */
 
 
-Route::get('/login', function () {
-    $title = "Login Or register";
-    return view('pages.login', compact('title')); //this how to set a title
-});
+// Route::get('/login', function () {
+//     $title = "Login Or register";
+//     return view('pages.login', compact('title')); //this how to set a title
+// });
 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::post('/manual-logout', function () {
-    Auth::logout();
-    request()->session()->invalidate();
-    request()->session()->regenerateToken();
-    return redirect('/login');
-});
+// Route::post('/manual-logout', function () {
+//     Auth::logout();
+//     request()->session()->invalidate();
+//     request()->session()->regenerateToken();
+//     return redirect('/login');
+// });
