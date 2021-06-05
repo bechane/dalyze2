@@ -1,79 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.dashboard')
 
 @section('content')
-    {{-- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Register') }}</div>
-
-                <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
-                        @csrf
-
-                        <div class="form-group row">
-                            <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Name') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-
-                                @error('name')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-
-                                @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            </div>
-                        </div>
-
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Register') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
 
     <div class="main-wrapper">
         <div class="page-wrapper full-page">
@@ -83,15 +10,13 @@
                     <div class="col-md-7 col-xl-4 mx-auto">
                         <div class="card">
                             <div class="auth-form-wrapper px-4 py-5">
-                                <a href="#" class="noble-ui-logo d-block mb-2">Noble<span>UI</span></a>
-                                <h5 class="text-muted font-weight-normal mb-4">Create a free account.</h5>
+                                <h2 class="h4 font-weight-normal mb-4">Create a free account</h2>
                                 <form class="forms-sample" method="POST" action="{{ route('register') }}">
                                     @csrf
                                     <div class="form-group">
                                         <label for="name">Username</label>
-                                        <input type="text" class="form-control" id="name"
-                                            autocomplete="Username" placeholder="Username" name="name"
-                                            value="{{ old('name') }}">
+                                        <input type="text" class="form-control" id="name" autocomplete="Username"
+                                            placeholder="Username" name="name" value="{{ old('name') }}">
 
                                         @error('name')
                                             <span class="error mt-2 text-danger" role="alert">
@@ -101,8 +26,8 @@
                                     </div>
                                     <div class="form-group">
                                         <label for="email">Email address</label>
-                                        <input type="email" class="form-control" id="email" placeholder="Email"
-                                            name="email" value="{{ old('email') }}">
+                                        <input type="email" class="form-control" id="email" placeholder="Email" name="email"
+                                            value="{{ old('email') }}">
 
                                         @error('email')
                                             <span class="error mt-2 text-danger" role="alert">
@@ -130,7 +55,9 @@
                                     <div class="mt-3">
                                         <button class="btn btn-primary text-white mr-2 mb-2 mb-md-0">Sign up</button>
                                     </div>
-                                    <a href="login.html" class="d-block mt-3 text-muted">Already a user? Sign in</a>
+                                    @if (Route::has('login'))
+                                        <a href="{{ route('login') }}" class="d-block mt-3 text-muted">Already a user? Sign in</a>
+                                    @endif
                                 </form>
                             </div>
                         </div>

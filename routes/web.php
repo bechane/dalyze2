@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\InvalidArgumentException;
 
@@ -14,19 +15,12 @@ use SebastianBergmann\CodeCoverage\InvalidArgumentException;
 |
 */
 
-
-// Route::get('/login', function () {
-//     $title = "Login Or register";
-//     return view('pages.login', compact('title')); //this how to set a title
-// });
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-// Route::post('/manual-logout', function () {
-//     Auth::logout();
-//     request()->session()->invalidate();
-//     request()->session()->regenerateToken();
-//     return redirect('/login');
-// });
+Route::get('/dashboard', function () {
+    return view('dashboard.dashboard');
+})->middleware('auth')->name('dashboard');
+
+Route::get('/users/profile', [UserController::class, 'edit']);
